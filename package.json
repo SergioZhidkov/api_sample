@@ -1,0 +1,36 @@
+{
+  "name": "newsproject_api",
+  "version": "1.0.0",
+  "description": "api",
+  "main": "index.js",
+  "repository": "https://SergioRZN@bitbucket.org/SergioRZN/newsproject_api.git",
+  "author": "Sergio Zhidkov",
+  "scripts": {
+    "build": "tsc --project ./",
+    "dev": "nodemon src/server.ts",
+    "start": "node dist/server.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@elastic/elasticsearch": "^8.1.0",
+    "axios": "^0.27.2",
+    "cassandra-driver": "^4.6.3",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "express-cassandra": "^2.6.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.12",
+    "@types/jsonwebtoken": "^8.5.1",
+    "@types/node": "^15.12.2",
+    "newsproject_types": "^1.0.35",
+    "nodemon": "^2.0.7",
+    "ts-node": "^10.0.0",
+    "typescript": "^4.3.2"
+  }
+}
