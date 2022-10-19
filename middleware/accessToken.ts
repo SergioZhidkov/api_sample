@@ -19,14 +19,14 @@ export const withAccessToken = (req: RequestWithAccessToken, res: Response, next
     req.userAgent = req.headers['user-agent'];
 
     if (authorization) {
-        if (authorization[0] !== 'JWT') return res.status(400).json({ message: 'Authorization token provided but token has invalid type.' })
+        if (authorization[0] !== 'JWT') return res.status(400).json({ message: 'Authorization token provided but token has invalid type.' });
 
-        let accessToken = authorization[1]
+        let accessToken = authorization[1];
 
-        if (!accessToken) return res.status(400).json({ message: 'Authorization token provided without accessToken.' })
+        if (!accessToken) return res.status(400).json({ message: 'Authorization token provided without accessToken.' });
 
         try {
-            const payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET)
+            const payload = jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET);
 
             req.accessToken = payload as IJWTAccessToken;
 
@@ -35,16 +35,16 @@ export const withAccessToken = (req: RequestWithAccessToken, res: Response, next
             if (e instanceof jwt.TokenExpiredError) {
                 
                 //console.log('Access token expired in middleware.');
-                return res.status(401).json({ message: "Access token expired." })
+                return res.status(401).json({ message: "Access token expired." });
             }
 
             if (e instanceof jwt.JsonWebTokenError) {
                
                 //console.log('Invalid access token.');
-                return res.status(403).send({ message: "Invalid access token." })
+                return res.status(403).send({ message: "Invalid access token." });
             }
 
-            return res.status(400).json({ message: e.message })
+            return res.status(400).json({ message: e.message });
         }
     } 
 
